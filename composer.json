@@ -1,0 +1,17 @@
+{
+    "name": "snappdoctor/php-rest-response",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alireza Jangi",
+            "email": "ajangi@hotmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "DrResponse\\" : "src/"
+    },
+    "require": {}
+}
