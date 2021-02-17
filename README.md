@@ -16,6 +16,21 @@ A PHP standard response structure to unify responses between microservices.
 - ```bash composer require ajangi/php-rest-response ```
 
 ### Hot to use?
+#### method #1
 ```php
+...
+use DrResponse\DrResponse;
+...
 
+public function index(): Response
+    {
+        $response = new DrResponse(
+            200,
+            DrResponse::SUCCESS_RESPONSE,
+            ['users' => "List of users for example"],
+            [],
+            ''
+        );
+        return $response->send();
+    }
 ```
