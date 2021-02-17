@@ -48,6 +48,27 @@ The above code simply returens
     }
 }
 ```
+Or you can simply use
+```php
+...
+use DrResponse\DrResponse;
+...
+
+public function index(): Response
+    {
+        return (new SuccessResponse())->send();
+    }
+```
+to get 
+```json
+{
+    "status_code": 200,
+    "result": "SUCCESS",
+    "developer_message": "",
+    "messages": [],
+    "data": []
+}
+```
 #### Error Response Sample
 ```php
 public function index(): Response
