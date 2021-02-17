@@ -13,7 +13,9 @@ A PHP standard response structure to unify responses between microservices.
 - minimum php version : 7.0.0
 
 ### Installation
-- ```bash composer require ajangi/php-rest-response ```
+```bash
+composer require ajangi/php-rest-response
+```
 
 ### Hot to use?
 #### Success Response Sample
