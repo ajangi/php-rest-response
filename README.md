@@ -96,6 +96,7 @@ public function index(): Response
 use Symfony\Component\HttpFoundation\Response;
 use DrResponse\NotFoundErrorResponse;
 ...
+
 public function index(): Response
     {
         $messages = [
@@ -114,6 +115,61 @@ The above code snippets simply returns :
     "messages": {
         "entity": [
             "entity not found!"
+        ]
+    },
+    "data": []
+}
+```
+
+#### Extending new Classes
+For example assume you want to define a class for 403 Access Denied Response
+```php
+// define a new class like this
+<?php
+
+namespace App;
+
+use DrResponse\DrResponse;
+use Symfony\Component\HttpFoundation\Response;
+
+class ForbiddenErrorResponse extends DrResponse
+{
+    public function __construct()
+    {
+        $status_code = Response::HTTP_FORBIDDEN;
+        $result = DrResponse::ERROR_RESPONSE;
+        $data = [];
+        $messages = [
+            'access' => [
+                'Forbidden!!'
+            ]
+        ];
+        $developer_message = '';
+        parent::__construct($status_code, $result, $data, $messages, $developer_message);
+    }
+}
+```
+Using ForbiddenErrorResponse class : 
+```php
+...
+use Symfony\Component\HttpFoundation\Response;
+use DrResponse\NotFoundErrorResponse;
+...
+
+public function index(): Response
+    {
+        return (new ForbiddenErrorResponse())->send();
+    }
+```
+and you'll get response : 
+```json
+{
+    "status_code": 403,
+    "result": "ERROR",
+    "developer_message": "",
+    "messages": {
+        "access": [
+            "Forbidden!!"
         ]
     },
     "data": []
