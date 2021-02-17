@@ -51,6 +51,7 @@ The above code simply returens
 Or you can simply use
 ```php
 ...
+use Symfony\Component\HttpFoundation\Response;
 use DrResponse\DrResponse;
 ...
 
@@ -71,6 +72,11 @@ to get
 ```
 #### Error Response Sample
 ```php
+...
+use Symfony\Component\HttpFoundation\Response;
+use DrResponse\DrResponse;
+...
+
 public function index(): Response
     {
         $status_code = Response::HTTP_NOT_FOUND;
