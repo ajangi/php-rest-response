@@ -14,3 +14,8 @@ A PHP standard response structure to unify responses between microservices.
 
 ### Installation
 - ```bash composer require ajangi/php-rest-response ```
+
+### Hot to use?
+```php
+
+```
