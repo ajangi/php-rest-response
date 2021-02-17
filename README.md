@@ -9,8 +9,8 @@
 # PHP-REST-RESPONSE
 A PHP standard response structure to unify responses between microservices.
 
-## Requirements
+### Requirements
 - minimum php version : 7.0.0
 
-## Installation
+### Installation
 - ```bash composer require ajangi/php-rest-response ```
