@@ -121,6 +121,6 @@ class DrResponse implements ResponseInterface
             'developer_message' => $this->getDeveloperMessage(),
             'messages' => $this->getMessages(),
             'data' => $this->getData()
-        ]),$this->getStatusCode(),['Content-Type' => 'application/json']);
+        ]),$this->getStatusCode() ?? 200,['Content-Type' => 'application/json']);
     }
 }
