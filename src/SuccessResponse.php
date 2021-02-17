@@ -2,9 +2,7 @@
 
 namespace DrResponse;
 
-use iResponse;
-
-class SuccessResponse extends DrResponse implements iResponse
+class SuccessResponse extends DrResponse
 {
     private $result = self::SUCCESS_RESPONSE;
     private $messages = [];
@@ -22,14 +20,13 @@ class SuccessResponse extends DrResponse implements iResponse
     /**
      * Set the value of data
      *
+     * @param $data
      * @return  self
-     */ 
-    public function setData($data)
+     */
+    public function setData($data): SuccessResponse
     {
         $this->data = $data;
 
         return $this;
     }
-
-    
 }

@@ -1,9 +1,9 @@
 <?php
 namespace DrResponse;
 
-use iResponse;
+use Symfony\Component\HttpFoundation\Response;
 
-class DrResponse implements iResponse
+class DrResponse implements ResponseInterface
 {
     const SUCCESS_RESPONSE = 'SUCCESS';
     const ERROR_RESPONSE   = 'ERROR';
@@ -113,35 +113,14 @@ class DrResponse implements iResponse
         return $this;
     }
 
-    /**
-     * return response as json string 
-     *
-     * @return string
-     */
-    public function asJson(): string
+    public function send(): Response
     {
-        return json_encode([
+        return new Response(json_encode([
             'status_code' => $this->getStatusCode(),
             'result' => $this->getResult(),
-            'data' => $this->getData(),
+            'developer_message' => $this->getDeveloperMessage(),
             'messages' => $this->getMessages(),
-            'developer_message' => $this->getDeveloperMessage()
-        ]);
-    }
-
-    /**
-     * return response as array
-     *
-     * @return array
-     */
-    public function asArray(): array
-    {
-        return [
-            'status_code' => $this->getStatusCode(),
-            'result' => $this->getResult(),
-            'data' => $this->getData(),
-            'messages' => $this->getMessages(),
-            'developer_message' => $this->getDeveloperMessage()
-        ];
+            'data' => $this->getData()
+        ]),$this->getStatusCode(),['Content-Type' => 'application/json']);
     }
 }
