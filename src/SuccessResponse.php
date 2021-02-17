@@ -4,29 +4,11 @@ namespace DrResponse;
 
 class SuccessResponse extends DrResponse
 {
-    private $result = self::SUCCESS_RESPONSE;
-    private $messages = [];
-    private $developer_message = '';
     private $data;
 
-    /**
-     * Get the value of data
-     */ 
-    public function getData()
+    public function __construct(array $data = [])
     {
-        return $this->data;
-    }
-
-    /**
-     * Set the value of data
-     *
-     * @param $data
-     * @return  self
-     */
-    public function setData($data): SuccessResponse
-    {
-        $this->data = $data;
-
-        return $this;
+        $this->setData($data);
+        parent::__construct(200, self::SUCCESS_RESPONSE, $data, [], '');
     }
 }

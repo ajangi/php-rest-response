@@ -14,6 +14,23 @@ class DrResponse implements ResponseInterface
     private $developer_message;
 
     /**
+     * DrResponse constructor
+     * @param int $status_code
+     * @param string $result
+     * @param array $data
+     * @param array $messages
+     * @param string|null $developer_message
+     */
+    public function __construct(int $status_code = 200, string $result = self::SUCCESS_RESPONSE,array $data = [], array $messages = [], string $developer_message = null)
+    {
+        $this->setStatusCode($status_code);
+        $this->setResult($result);
+        $this->setData($data);
+        $this->setMessages($messages);
+        $this->setDeveloperMessage($developer_message);
+    }
+
+    /**
      * Get the value of status_code
      */ 
     public function getStatusCode()
