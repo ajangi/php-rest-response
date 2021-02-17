@@ -6,4 +6,8 @@
 <a href="https://packagist.org/packages/ajangi/php-rest-response"><img src="https://poser.pugx.org/ajangi/php-rest-response/composerlock" alt="License"></a>
 </p>
 
-# SnappDoctor Standard PHP Response Structure
+# PHP-REST-RESPONSE
+A PHP standard response structure to unify responses between microservices.
+
+## Requirements
+- minimum php version : 7.0.0
