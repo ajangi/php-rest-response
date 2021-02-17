@@ -19,18 +19,18 @@ A PHP standard response structure to unify responses between microservices.
 #### method #1
 ```php
 ...
+use Symfony\Component\HttpFoundation\Response;
 use DrResponse\DrResponse;
 ...
 
 public function index(): Response
     {
-        $response = new DrResponse(
-            200,
-            DrResponse::SUCCESS_RESPONSE,
-            ['users' => "List of users for example"],
-            [],
-            ''
-        );
+        $status_code = Response::HTTP_OK;
+        $result = DrResponse::SUCCESS_RESPONSE;
+        $data = ['users' => "List of users for example"];
+        $messages = [];
+        $developer_message = '';
+        $response = new DrResponse($status_code,$result,$data,$messages,$developer_message);
         return $response->send();
     }
 ```
