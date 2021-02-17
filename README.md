@@ -16,7 +16,7 @@ A PHP standard response structure to unify responses between microservices.
 - ```bash composer require ajangi/php-rest-response ```
 
 ### Hot to use?
-- Success Response Sample
+#### Success Response Sample
 ```php
 ...
 use Symfony\Component\HttpFoundation\Response;
@@ -34,7 +34,19 @@ public function index(): Response
         return $response->send();
     }
 ```
-- Error Response Sample
+The above code simply returens 
+```json
+{
+    "status_code": 200,
+    "result": "SUCCESS",
+    "developer_message": "",
+    "messages": [],
+    "data": {
+        "users": "List of users for example"
+    }
+}
+```
+#### Error Response Sample
 ```php
 public function index(): Response
     {
@@ -49,17 +61,17 @@ public function index(): Response
         return $response->send();
     }
 ```
-This codes simple returns : 
+The above codes simple returns : 
 ```json
 {
-"status_code": 404,
-"result": "ERROR",
-"developer_message": "Dear Front-End developer! You may have a typo!",
-"messages": {
-"entity": [
-"entity not found!"
-]
-},
-"data": []
+    "status_code": 404,
+    "result": "ERROR",
+    "developer_message": "Dear Front-End developer! You may have a typo!",
+    "messages": {
+        "entity": [
+            "entity not found!"
+        ]
+    },
+    "data": []
 }
 ```
