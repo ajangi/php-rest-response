@@ -90,7 +90,22 @@ public function index(): Response
         return $response->send();
     }
 ```
-The above codes simple returns : 
+```php
+// or simply use 
+...
+use Symfony\Component\HttpFoundation\Response;
+use DrResponse\NotFoundErrorResponse;
+...
+public function index(): Response
+    {
+        $messages = [
+            'entity' => ['entity not found!'] // This structure is recommended
+        ];
+        $developer_message = 'Dear Front-End developer! You may have a typo!';
+        return (new NotFoundErrorResponse($messages, $developer_message))->send();
+    }
+```
+The above code snippets simply returns : 
 ```json
 {
     "status_code": 404,
