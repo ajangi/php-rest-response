@@ -41,9 +41,10 @@ class IceResponse implements ResponseInterface
     /**
      * Set the value of status_code
      *
+     * @param $status_code
      * @return  self
-     */ 
-    public function setStatusCode($status_code)
+     */
+    public function setStatusCode($status_code): IceResponse
     {
         $this->status_code = $status_code;
 
@@ -61,9 +62,10 @@ class IceResponse implements ResponseInterface
     /**
      * Set the value of result
      *
+     * @param $result
      * @return  self
-     */ 
-    public function setResult($result)
+     */
+    public function setResult($result): IceResponse
     {
         $this->result = $result;
 
@@ -81,9 +83,10 @@ class IceResponse implements ResponseInterface
     /**
      * Set the value of data
      *
+     * @param $data
      * @return  self
-     */ 
-    public function setData($data)
+     */
+    public function setData($data): IceResponse
     {
         $this->data = $data;
 
@@ -101,9 +104,10 @@ class IceResponse implements ResponseInterface
     /**
      * Set the value of messages
      *
+     * @param $messages
      * @return  self
-     */ 
-    public function setMessages($messages)
+     */
+    public function setMessages($messages): IceResponse
     {
         $this->messages = $messages;
 
@@ -121,15 +125,19 @@ class IceResponse implements ResponseInterface
     /**
      * Set the value of developer_message
      *
+     * @param $developer_message
      * @return  self
-     */ 
-    public function setDeveloperMessage($developer_message)
+     */
+    public function setDeveloperMessage($developer_message): IceResponse
     {
         $this->developer_message = $developer_message;
 
         return $this;
     }
 
+    /**
+     * @return Response
+     */
     public function send(): Response
     {
         return new Response(json_encode([
