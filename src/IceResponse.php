@@ -3,26 +3,45 @@ namespace IceResponse;
 
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Class IceResponse
+ *
+ * @category Class
+ * @package  IceResponse
+ * @author   Alireza Jangi <akangi@hotmail.com>
+ * @license  https://opensource.org/licenses/MIT MIT LICENSE
+ * @link     https://github.com/ajangi/php-rest-response
+ */
 class IceResponse implements ResponseInterface
 {
     const SUCCESS_RESPONSE = 'SUCCESS';
     const ERROR_RESPONSE   = 'ERROR';
-    private $status_code;
-    private $result;
-    private $data;
-    private $messages;
-    private $developer_message;
+    private $_status_code;
+    private $_result;
+    private $_data;
+    private $_messages;
+    private $_developer_message;
 
     /**
      * IceResponse constructor
-     * @param int $status_code
-     * @param string $result
-     * @param array $data
-     * @param array $messages
-     * @param string|null $developer_message
+     *
+     * @param int         $status_code       The status code of response
+     * @param string      $result            The result of response
+     *                                       [SUCCESS or ERROR]
+     * @param array       $data              The data you want to send
+     *                                       back in response
+     * @param array       $messages          Messages array you want
+     *                                       to show to users
+     * @param string|null $developer_message Message you want to send
+     *                                       to other developer
      */
-    public function __construct(int $status_code = 200, string $result = self::SUCCESS_RESPONSE,array $data = [], array $messages = [], string $developer_message = null)
-    {
+    public function __construct(
+        int $status_code = 200,
+        string $result = self::SUCCESS_RESPONSE,
+        array $data = [],
+        array $messages = [],
+        string $developer_message = null
+    ){
         $this->setStatusCode($status_code);
         $this->setResult($result);
         $this->setData($data);
@@ -35,18 +54,18 @@ class IceResponse implements ResponseInterface
      */ 
     public function getStatusCode()
     {
-        return $this->status_code;
+        return $this->_status_code;
     }
 
     /**
      * Set the value of status_code
      *
-     * @param $status_code
-     * @return  self
+     * @param  $status_code
+     * @return self
      */
     public function setStatusCode($status_code): IceResponse
     {
-        $this->status_code = $status_code;
+        $this->_status_code = $status_code;
 
         return $this;
     }
@@ -56,18 +75,18 @@ class IceResponse implements ResponseInterface
      */ 
     public function getResult()
     {
-        return $this->result;
+        return $this->_result;
     }
 
     /**
      * Set the value of result
      *
-     * @param $result
-     * @return  self
+     * @param  $result
+     * @return self
      */
     public function setResult($result): IceResponse
     {
-        $this->result = $result;
+        $this->_result = $result;
 
         return $this;
     }
@@ -77,18 +96,18 @@ class IceResponse implements ResponseInterface
      */ 
     public function getData()
     {
-        return $this->data;
+        return $this->_data;
     }
 
     /**
      * Set the value of data
      *
-     * @param $data
-     * @return  self
+     * @param  $data
+     * @return self
      */
     public function setData($data): IceResponse
     {
-        $this->data = $data;
+        $this->_data = $data;
 
         return $this;
     }
@@ -98,18 +117,18 @@ class IceResponse implements ResponseInterface
      */ 
     public function getMessages()
     {
-        return $this->messages;
+        return $this->_messages;
     }
 
     /**
      * Set the value of messages
      *
-     * @param $messages
-     * @return  self
+     * @param  $messages
+     * @return self
      */
     public function setMessages($messages): IceResponse
     {
-        $this->messages = $messages;
+        $this->_messages = $messages;
 
         return $this;
     }
@@ -119,18 +138,18 @@ class IceResponse implements ResponseInterface
      */ 
     public function getDeveloperMessage()
     {
-        return $this->developer_message;
+        return $this->_developer_message;
     }
 
     /**
      * Set the value of developer_message
      *
-     * @param $developer_message
-     * @return  self
+     * @param  $developer_message
+     * @return self
      */
     public function setDeveloperMessage($developer_message): IceResponse
     {
-        $this->developer_message = $developer_message;
+        $this->_developer_message = $developer_message;
 
         return $this;
     }
@@ -140,12 +159,16 @@ class IceResponse implements ResponseInterface
      */
     public function send(): Response
     {
-        return new Response(json_encode([
-            'status_code' => $this->getStatusCode(),
-            'result' => $this->getResult(),
-            'developer_message' => $this->getDeveloperMessage(),
-            'messages' => $this->getMessages(),
-            'data' => $this->getData()
-        ]),$this->getStatusCode() ?? 200,['Content-Type' => 'application/json']);
+        return new Response(
+            json_encode(
+                [
+                'status_code' => $this->getStatusCode(),
+                'result' => $this->getResult(),
+                'developer_message' => $this->getDeveloperMessage(),
+                'messages' => $this->getMessages(),
+                'data' => $this->getData()
+                ]
+            ), $this->getStatusCode() ?? 200, ['Content-Type' => 'application/json']
+        );
     }
 }
