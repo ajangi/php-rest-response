@@ -1,6 +1,6 @@
 <?php
 
-namespace DrResponse;
+namespace IceResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 interface ResponseInterface {

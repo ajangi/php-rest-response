@@ -1,10 +1,9 @@
 <?php
 
 
-namespace DrResponse;
+namespace IceResponse;
 
-
-class NotFoundErrorResponse extends DrResponse
+class NotFoundErrorResponse extends IceResponse
 {
     public function __construct(array $messages = [], string $developer_message = '')
     {

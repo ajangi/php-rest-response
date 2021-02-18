@@ -22,17 +22,17 @@ composer require ajangi/php-rest-response
 ```php
 ...
 use Symfony\Component\HttpFoundation\Response;
-use DrResponse\DrResponse;
+use IceResponse\IceResponse;
 ...
 
 public function index(): Response
     {
         $status_code = Response::HTTP_OK;
-        $result = DrResponse::SUCCESS_RESPONSE;
+        $result = IceResponse::SUCCESS_RESPONSE;
         $data = ['users' => "List of users for example"];
         $messages = [];
         $developer_message = '';
-        $response = new DrResponse($status_code,$result,$data,$messages,$developer_message);
+        $response = new IceResponse($status_code,$result,$data,$messages,$developer_message);
         return $response->send();
     }
 ```
@@ -52,7 +52,7 @@ Or you can simply use
 ```php
 ...
 use Symfony\Component\HttpFoundation\Response;
-use DrResponse\DrResponse;
+use IceResponse\IceResponse;
 ...
 
 public function index(): Response
@@ -74,19 +74,19 @@ to get
 ```php
 ...
 use Symfony\Component\HttpFoundation\Response;
-use DrResponse\DrResponse;
+use IceResponse\IceResponse;
 ...
 
 public function index(): Response
     {
         $status_code = Response::HTTP_NOT_FOUND;
-        $result = DrResponse::ERROR_RESPONSE;
+        $result = IceResponse::ERROR_RESPONSE;
         $data = [];
         $messages = [
             'entity' => ['entity not found!'] // This structure is recommended
         ];
         $developer_message = 'Dear Front-End developer! You may have a typo!';
-        $response = new DrResponse($status_code,$result,$data,$messages,$developer_message);
+        $response = new IceResponse($status_code,$result,$data,$messages,$developer_message);
         return $response->send();
     }
 ```
@@ -94,7 +94,7 @@ public function index(): Response
 // or simply use 
 ...
 use Symfony\Component\HttpFoundation\Response;
-use DrResponse\NotFoundErrorResponse;
+use IceResponse\NotFoundErrorResponse;
 ...
 
 public function index(): Response
@@ -129,15 +129,15 @@ For example assume you want to define a class for 403 Access Denied Response
 
 namespace App;
 
-use DrResponse\DrResponse;
+use IceResponse\IceResponse;
 use Symfony\Component\HttpFoundation\Response;
 
-class ForbiddenErrorResponse extends DrResponse
+class ForbiddenErrorResponse extends IceResponse
 {
     public function __construct()
     {
         $status_code = Response::HTTP_FORBIDDEN;
-        $result = DrResponse::ERROR_RESPONSE;
+        $result = IceResponse::ERROR_RESPONSE;
         $data = [];
         $messages = [
             'access' => [
@@ -153,7 +153,7 @@ Using ForbiddenErrorResponse class :
 ```php
 ...
 use Symfony\Component\HttpFoundation\Response;
-use DrResponse\NotFoundErrorResponse;
+use IceResponse\NotFoundErrorResponse;
 ...
 
 public function index(): Response

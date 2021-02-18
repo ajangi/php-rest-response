@@ -1,8 +1,8 @@
 <?php
 
-namespace DrResponse;
+namespace IceResponse;
 
-class SuccessResponse extends DrResponse
+class SuccessResponse extends IceResponse
 {
     public function __construct(array $data = [])
     {

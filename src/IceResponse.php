@@ -1,9 +1,9 @@
 <?php
-namespace DrResponse;
+namespace IceResponse;
 
 use Symfony\Component\HttpFoundation\Response;
 
-class DrResponse implements ResponseInterface
+class IceResponse implements ResponseInterface
 {
     const SUCCESS_RESPONSE = 'SUCCESS';
     const ERROR_RESPONSE   = 'ERROR';
@@ -14,7 +14,7 @@ class DrResponse implements ResponseInterface
     private $developer_message;
 
     /**
-     * DrResponse constructor
+     * IceResponse constructor
      * @param int $status_code
      * @param string $result
      * @param array $data
