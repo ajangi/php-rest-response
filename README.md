@@ -175,3 +175,5 @@ and you'll get response :
     "data": []
 }
 ```
+### Contributing 
+Take a look at [CONTRIBUTING](CONTRIBUTING.md) for details.
